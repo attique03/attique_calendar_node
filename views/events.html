@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events</title>
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+    <!-- <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    /> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- <script type="module" src="index.js"></script> -->
+  </head>
+  <body>
+    <div class="container">
+      <!-- header -->
+      <header>Friday, April 1</header>
+
+      <!-- All Day -->
+      <div class="all-day-section">
+        <!-- <span class="green"></span> -->
+
+        <!-- <div class="all-day-event-data">
+          <span class="all-day">ALL DAY - </span
+          ><b class="sample-item"> Sample Item </b>
+          <span class="sample-location">Sample Location</span>
+        </div> -->
+      </div>
+
+      <!-- AM -->
+      <div class="am">
+        <div class="am-title">AM</div>
+
+        <div class="am-data">
+          <div class="am-content">
+            <span class="full">9:00</span>
+
+            <div class="am-inner-content">
+              <!-- <div class="event">
+                <div class="event-content" id="cont-1">
+                  <span class="all-day">9:00AM - </span
+                  ><b class="sample-item"> Sample Item </b>
+                  <span class="sample-location" style="margin-left: 0"
+                    >Sample Location</span
+                  >
+                </div>
+              </div> -->
+              <div class="half" id="event-1">
+                <div class="event"></div>
+              </div>
+              <div class="event" id="event-2">
+                <!-- <div class="event-content" id="cont-2">
+                  <span class="all-day">9:00AM - </span
+                  ><b class="sample-item"> Sample Item </b>
+                  <span class="sample-location" style="margin-left: 0"
+                    >Sample Location</span
+                  >
+                </div> -->
+              </div>
+
+              <div class="am-inner-half">9:30</div>
+            </div>
+          </div>
+
+          <div class="am-content">
+            <span class="full">10:00</span>
+            <div class="am-inner-content">
+              <div class="half" id="event-3">
+                <div class="event"></div>
+              </div>
+              <div class="event" id="event-4"></div>
+              <div class="am-inner-half">10:30</div>
+              <!-- <div class="full"></div> -->
+            </div>
+          </div>
+
+          <div class="am-content">
+            <span class="full">11:00</span>
+            <div class="am-inner-content">
+              <div class="half" id="event-5"></div>
+              <div class="event" id="event-6"></div>
+              <div class="am-inner-half">11:30</div>
+              <!-- <div class="full"></div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pm">
+        <div class="pm-title">PM</div>
+
+        <div class="am-data">
+          <div class="am-content">
+            <span class="full">12:00</span>
+            <div class="am-inner-content">
+              <div class="half" id="event-6"></div>
+              <div class="event" id="event-7"></div>
+              <div class="am-inner-half">12:30</div>
+              <!-- <div class="full"></div> -->
+            </div>
+          </div>
+
+          <div class="am-content">
+            <span class="full">1:00</span>
+            <div class="am-inner-content">
+              <div class="half" id="event-8"></div>
+              <div class="event" id="event-9"></div>
+              <div class="am-inner-half">1:30</div>
+              <!-- <div class="full"></div> -->
+            </div>
+          </div>
+
+          <div class="am-content">
+            <span class="full">2:00</span>
+            <div class="am-inner-content">
+              <div class="half" id="event-10"></div>
+              <div class="event" id="event-11"></div>
+              <div class="am-inner-half">2:30</div>
+              <!-- <div class="full"></div> -->
+            </div>
+          </div>
+
+          <div class="am-content">
+            <span class="full">3:00</span>
+            <div class="am-inner-content">
+              <div class="half" id="event-12"></div>
+              <div class="event" id="event-13"></div>
+              <div class="am-inner-half">3:30</div>
+              <!-- <div class="full"></div> -->
+            </div>
+          </div>
+
+          <div class="am-content">
+            <span class="full">4:00</span>
+            <div class="am-inner-content">
+              <div class="half" id="event-14"></div>
+              <div class="event" id="event-15"></div>
+              <div class="am-inner-half">4:30</div>
+              <!-- <div class="full"></div> -->
+            </div>
+          </div>
+
+          <div class="am-content">
+            <span class="full">5:00</span>
+            <div class="am-inner-content">
+              <div class="half" id="event-16"></div>
+              <div class="event" id="event-17"></div>
+              <div class="am-inner-half">5:30</div>
+              <!-- <div class="full"></div> -->
+            </div>
+          </div>
+
+          <div class="am-content">
+            <span class="full">6:00</span>
+            <div class="am-inner-content">
+              <!-- <div class="event" id="event-2">
+                <div class="event-content" id="cont-2">
+                  <span class="all-day">9:00AM - </span
+                  ><b class="sample-item"> Sample Item </b>
+                  <span class="sample-location" style="margin-left: 0"
+                    >Sample Location</span
+                  >
+                </div>
+              </div> -->
+
+              <div class="half" id="event-18"></div>
+              <div class="event" id="event-19"></div>
+              <div class="am-inner-half">6:30</div>
+              <!-- <div class="full"></div> -->
+            </div>
+          </div>
+
+          <div class="am-content">
+            <span class="full">7:00</span>
+            <div class="am-inner-content">
+              <div class="half" id="event-20"></div>
+              <div class="event" id="event-21"></div>
+              <div class="am-inner-half">7:30</div>
+              <!-- <div class="full"></div> -->
+            </div>
+          </div>
+
+          <div class="am-content">
+            <span class="full">8:00</span>
+            <div class="am-inner-content">
+              <div class="half" id="event-22"></div>
+              <div class="event" id="event-23"></div>
+              <div class="am-inner-half">8:30</div>
+              <!-- <div class="full"></div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ______________ Modal _________ -->
+    <section class="modal hidden">
+      <div class="flex">
+        <!-- <img
+          src="https://avatars.githubusercontent.com/u/62628408?s=96&v=4"
+          width="50px"
+          height="50px"
+          alt="user"
+        /> -->
+        <div></div>
+        <button class="btn-close">⨉</button>
+      </div>
+      <!-- <div>
+        <h3>Stay in touch</h3>
+        <p>
+          This is a dummy newsletter form so don't bother trying to test it. Not
+          that I expect you to, anyways. :)
+        </p>
+      </div> -->
+
+      <button class="btn">Delete this event</button>
+
+      <!-- Form -->
+      <div class="create-blog content">
+        <form action="/events" method="POST">
+          <label for="start">Start Time:</label>
+          <input type="text" id="start" name="startTime" required />
+          <label for="end">End Time:</label>
+          <input type="text" id="end" name="endTime" required />
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+          <label for="location">Location:</label>
+          <input type="text" id="location" name="location" required />
+          <button>Update</button>
+        </form>
+      </div>
+
+      <!-- <input type="email" id="email" placeholder="brendaneich@js.com" />
+      <button class="btn">Do Something</button> -->
+    </section>
+
+    <div class="overlay hidden"></div>
+    <!-- <button class="btn btn-open">Open Modal</button> -->
+  </body>
+
+  <script>
+    let events = [];
+    let createdEvents = [];
+    let eventsData = [];
+
+    async function getEvents() {
+      const endpoint = "/events/allevents";
+
+      try {
+        const res = await fetch(endpoint, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+        const data = await res.json();
+        if (data) {
+          eventsData = data;
+        }
+
+        // Get Time from Data.Js File
+        for (let i = 0; i < eventsData.length; i++) {
+          //   console.log("Events Data ===> ", eventsData);
+          createEvent(
+            eventsData[i].startTime,
+            eventsData[i].endTime,
+            eventsData[i].name,
+            eventsData[i].location,
+            eventsData[i]._id
+          );
+        }
+
+        function elementsOverlap(el1, el2) {
+          let domRect1 = el1.getBoundingClientRect();
+          let domRect2 = el2.getBoundingClientRect();
+
+          return !(
+            domRect1.top > domRect2.bottom ||
+            domRect1.right < domRect2.left ||
+            domRect1.bottom < domRect2.top ||
+            domRect1.left > domRect2.right
+          );
+        }
+
+        // Fix OverLap and prevent from colliding.
+        function fixOverLap() {
+          for (let i = 0; i < createdEvents.length; i++) {
+            if (elementsOverlap(createdEvents[i], createdEvents[i + 1])) {
+              let divWidth = 100 / createdEvents.length;
+              createdEvents[i].style.width = `${divWidth}%`;
+              createdEvents[i + 1].style.width = `${divWidth}%`;
+
+              if (createdEvents.length === 2) {
+                createdEvents[i + 1].style.width = null;
+                createdEvents[i + 1].style.marginLeft = `${450}px`;
+              } else if (createdEvents.length === 3) {
+                if (i == 1) {
+                  createdEvents[i + 1].style.width = null;
+                  createdEvents[i].style.marginLeft = `${320}px`;
+                  createdEvents[i + 1].style.marginLeft = `${590}px`;
+                }
+              } else {
+                createdEvents[i + 1].style.marginLeft = `${350}px`;
+              }
+            }
+          }
+        }
+
+        fixOverLap();
+      } catch (err) {
+        console.log("Error => ", err);
+        // location.assign("/");
+      }
+    }
+
+    getEvents();
+
+    // ___________ Modal
+    const modal = document.querySelector(".modal");
+    const overlay = document.querySelector(".overlay");
+    // const openModalBtn = document.querySelector(".btn-open");
+    const closeModalBtn = document.querySelector(".btn-close");
+
+    // close modal function
+    const closeModal = function () {
+      modal.classList.add("hidden");
+      overlay.classList.add("hidden");
+    };
+
+    // close the modal when the close button and overlay is clicked
+    closeModalBtn.addEventListener("click", closeModal);
+    overlay.addEventListener("click", closeModal);
+
+    // close modal when the Esc key is pressed
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+        closeModal();
+      }
+    });
+
+    // open modal function
+    async function openModal(id) {
+      console.log("open modal", id);
+      modal.classList.remove("hidden");
+      overlay.classList.remove("hidden");
+      
+       const endpoint = "/events/getEvent"
+
+      try {
+        const res = await fetch(endpoint, {
+          method: "GET",
+          body: JSON.stringify({ id }),
+          // body: id,
+          headers: { "Content-Type": "application/json" },
+        });
+        const data = await res.json();
+        console.log("Single Event ", data);
+        //   if (data.errors) {
+        //     emailError.textContent = data.errors.email;
+        //     passwordError.textContent = data.errors.password;
+        //   }
+        //   if (data.user) {
+        //     location.assign('/');
+        //   }
+      } catch (err) {
+        console.log("Single Event Fetch Error ", err);
+      }
+    }
+    // open modal event
+    // openModalBtn.addEventListener("click", openModal);
+
+    // Loop to select all the elements to display events on the calendar.
+    for (let i = 0; i < 24; i++) {
+      events[i] = document.querySelector(`#event-${i + 1}`);
+    }
+
+    // Function to Create Event and fill the corresponding section with Start and End time.
+    function createEvent(startTime, endTime, name, location, eventId) {
+      let newEvent = events[startTime].appendChild(
+        eventContent(startTime, name, location, eventId)
+      );
+      newEvent.dataset.target = "#myModal";
+      newEvent.dataset.modal = "modal";
+
+      newEvent.addEventListener(
+        "click",
+        function () {
+          openModal(newEvent.id);
+        }
+        //   function () {
+        //     // alert(`Hello World! ${newEvent.id}`);
+        //     document.querySelector(".modal").style.display = "block";
+        //     console.log("getElementById", document.querySelector(".modal"));
+        //     console.log(`Clicked on ${newEvent.id}`);
+        //   }
+      );
+
+      console.log("New Event ===> ", newEvent.id);
+      newEvent.classList.add("event");
+      newEvent.style.height = (endTime - startTime) * 70 + "px";
+      createdEvents.push(newEvent);
+    }
+
+    // function to create events box
+    function eventContent(startTime, name, location, eventId) {
+      //   console.log("Time --- ", startTime);
+
+      const eventDiv = document.createElement("div");
+      eventDiv.classList.add("event-content");
+      eventDiv.id = eventId;
+
+      const eventTime = document.createElement("span");
+      eventTime.classList.add("all-day");
+      eventTime.textContent = convertToActualTime(startTime);
+
+      const eventName = document.createElement("b");
+      eventName.classList.add("sample-item");
+      eventName.textContent = name;
+
+      const eventLocation = document.createElement("span");
+      eventLocation.classList.add("sample-location");
+      eventLocation.textContent = location;
+      eventLocation.style.marginLeft = "0px";
+
+      const eventFlex = document.querySelector(".event");
+      const eventDivData = eventFlex.appendChild(eventDiv);
+      eventDivData.appendChild(eventTime);
+      eventDivData.appendChild(eventName);
+      eventDivData.appendChild(eventLocation);
+
+      return eventDiv;
+    }
+
+    function convertToActualTime(time) {
+      return time === "1"
+        ? "9:00AM"
+        : time === "2"
+        ? "10:00AM"
+        : time === "3"
+        ? "10:30AM"
+        : time === "4"
+        ? "11:00AM"
+        : time === "5"
+        ? "11:30AM"
+        : time === "6"
+        ? "12:00PM"
+        : time === "7"
+        ? "12:30PM"
+        : time === "8"
+        ? "1:00PM"
+        : time === "9"
+        ? "1:30PM"
+        : time === "10"
+        ? "2:00PM"
+        : time === "11"
+        ? "2:30PM"
+        : time === "12"
+        ? "3:00PM"
+        : time === "13"
+        ? "3:30PM"
+        : time === "14"
+        ? "4:00PM"
+        : time === "15"
+        ? "4:30PM"
+        : time === "16"
+        ? "5:30PM"
+        : time === "17"
+        ? "6:00PM"
+        : time === "18"
+        ? "6:30PM"
+        : time === "19"
+        ? "7:00PM"
+        : time === "20"
+        ? "7:30PM"
+        : time === "21"
+        ? "8:00PM"
+        : time === "22"
+        ? "8:30PM"
+        : "Wrong time";
+    }
+  </script>
+</html>

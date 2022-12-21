@@ -1,0 +1,19 @@
+<nav>
+  <div class="site-title">
+    <a href="/"><h1 class="blog-heading">Blog Sport</h1></a>
+    <p>A Sports Site</p>
+  </div>
+  <ul>
+    <li><a href="/">Blogs</a></li>
+    <li><a href="/about">About</a></li>
+
+    <% if (user) { %>
+    <li><a href="/blogs/create">New Blog</a></li>
+    <li class="welcome">Welcome, <%= user.email.split("@")[0] %></li>
+    <li><a href="/logout">Log out</a></li>
+    <% } else { %>
+    <li><a href="/login">Log in</a></li>
+    <li><a href="/signup" class="btn">Sign up</a></li>
+    <% } %>
+  </ul>
+</nav>
