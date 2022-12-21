@@ -17,9 +17,9 @@ const getAllEvents = (req, res) => {
 };
 
 const getEventById = (req, res) => {
-  const id = req.body.id;
+  const id = req.params.id;
   console.log("Id ", id);
-  Event.findById(id)
+  Event.findById({_id: id})
     .then((result) => {
       res.json(result);
       // res.render("details", { blog: result, title: "Blog Details" });

@@ -15,7 +15,7 @@ const router = express.Router();
 
 router.put("/delete", checkUser, deleteEvent);
 router.put("/update", checkUser, updateEvent);
-router.get("/getEvent", checkUser, getEventById);
+router.get("/getEvent/:id", checkUser, getEventById);
 router.post("/", checkUser, event_create_post);
 router.get("/allevents", checkUser, getAllEvents);
 router.get("/createEvent", event_create_get);

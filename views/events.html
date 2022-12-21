@@ -345,12 +345,12 @@
       modal.classList.remove("hidden");
       overlay.classList.remove("hidden");
       
-       const endpoint = "/events/getEvent"
+       const endpoint = `/events/getEvent${id}`
 
       try {
         const res = await fetch(endpoint, {
           method: "GET",
-          body: JSON.stringify({ id }),
+        //   body: JSON.stringify({ id }),
           // body: id,
           headers: { "Content-Type": "application/json" },
         });
