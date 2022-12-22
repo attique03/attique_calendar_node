@@ -10,14 +10,36 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
     /> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
     <!-- <script type="module" src="index.js"></script> -->
   </head>
   <body>
+    <nav>
+        <div class="site-title">
+          <a href="/"><h1 class="blog-heading">Calendar</h1></a>
+          <p>An Event Creation Site</p>
+        </div>
+        <ul>
+          <!-- <li><a href="/">Blogs</a></li>
+          <li><a href="/about">About</a></li> -->
+      
+          <!-- <% if (user) { %> -->
+          <li><a href="/createEvent">New Event</a></li>
+          <li><a href="/createAllDayEvent">All Day</a></li>
+          <li><a href="/events">Events</a></li>
+          <!-- <li class="welcome">Welcome, <%= user.email.split("@")[0] %></li> -->
+          <li><a href="/logout">Log out</a></li>
+          <!-- <% } else { %> -->
+          <li><a href="/login"></a></li>
+          <li><a href="/signup"></a></li>
+          <!-- <% } %> -->
+        </ul>
+      </nav>
+      
     <div class="container">
       <!-- header -->
-      <header>Friday, April 1</header>
+      <header>Thursday, December 22</header>
 
       <!-- All Day -->
       <div class="all-day-section">
@@ -196,7 +218,7 @@
       </div>
     </div>
 
-    <!-- ______________ Modal _________ -->
+    <!-- ______________ Events Modal _________ -->
     <section class="modal hidden">
       <div class="flex">
         <!-- <img
@@ -216,15 +238,15 @@
         </p>
       </div> -->
 
-      <button class="btn">Delete this event</button>
+      <button class="btn btn-delete">Delete this event</button>
 
       <!-- Form -->
       <div class="create-blog content">
         <form action="/events" method="POST">
           <label for="start">Start Time:</label>
-          <input type="text" id="start" name="startTime" required />
+          <input type="text" id="startTime" name="startTime" required />
           <label for="end">End Time:</label>
-          <input type="text" id="end" name="endTime" required />
+          <input type="text" id="endTime" name="endTime" required />
           <label for="name">Name:</label>
           <input type="text" id="name" name="name" required />
           <label for="location">Location:</label>
@@ -245,6 +267,54 @@
     let events = [];
     let createdEvents = [];
     let eventsData = [];
+    let allDayeventsData = [];
+
+    const form = document.querySelector("form");
+    const deletebtn = document.querySelector(".btn-delete");
+    console.log("Delete Button ", deletebtn);
+
+    async function getAllDayEvents() {
+      const endpoint = "/events/allDayEvents";
+
+      try {
+        const res = await fetch(endpoint, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+        const data = await res.json();
+        console.log("data ===> ", data);
+        if (data) {
+          allDayeventsData = data;
+          console.log("All Day", allDayeventsData);
+        }
+
+        // Loop to fill all day events.
+        for (let i = 0; i < allDayeventsData.length; i++) {
+          let event = document.createElement("div");
+
+          console.log("Inside Loop ", allDayeventsData);
+
+          event.append(
+            (document.createElement("span").innerText = "All Day - "),
+            (document.createElement("b").innerText =
+              allDayeventsData[i].name + " - "),
+            (document.createElement("span").innerText =
+              allDayeventsData[i].location)
+          );
+          event.classList.add("all-day-event-data");
+          console.log(event);
+          document.querySelector(".all-day-section").append(event);
+
+          event.addEventListener("click", function () {
+            window.location.href = `/event/${allDayeventsData[i]._id}`;
+          });
+        }
+      } catch (err) {
+        console.log("Error => ", err);
+        // location.assign("/");
+      }
+    }
+    getAllDayEvents();
 
     async function getEvents() {
       const endpoint = "/events/allevents";
@@ -344,28 +414,74 @@
       console.log("open modal", id);
       modal.classList.remove("hidden");
       overlay.classList.remove("hidden");
-      
-       const endpoint = `/events/getEvent${id}`
 
+      // Get Event by Id
+      const endpoint = `/events/getEvent/${id}`;
       try {
         const res = await fetch(endpoint, {
           method: "GET",
-        //   body: JSON.stringify({ id }),
+          //   body: JSON.stringify({ id }),
           // body: id,
           headers: { "Content-Type": "application/json" },
         });
         const data = await res.json();
         console.log("Single Event ", data);
-        //   if (data.errors) {
-        //     emailError.textContent = data.errors.email;
-        //     passwordError.textContent = data.errors.password;
-        //   }
-        //   if (data.user) {
-        //     location.assign('/');
-        //   }
+
+        if (data) {
+          form.startTime.value = data.startTime;
+          form.endTime.value = data.endTime;
+          form.name.value = data.name;
+          form.location.value = data.location;
+        }
       } catch (err) {
         console.log("Single Event Fetch Error ", err);
       }
+
+      // Update Event by Id
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        // get values
+        const startTime = form.startTime.value;
+        const endTime = form.endTime.value;
+        const name = form.name.value;
+        const location = form.location.value;
+
+        // const id = blogId.dataset.doc;
+
+        const endpoint = `/events/update/${id}`;
+
+        try {
+          //   console.log(" Form Data ==> ", title, snippet, body, id);
+
+          const res = await fetch(endpoint, {
+            method: "PUT",
+            body: JSON.stringify({ startTime, endTime, name, location }),
+            headers: { "Content-Type": "application/json" },
+          });
+          const data = await res.json();
+          console.log("Data ==> ", data);
+          if (data) {
+            window.location.href = "/events";
+            // location.redirect("/events");
+          }
+        } catch (err) {
+          console.log("Error => ", err);
+          window.location.href = "/events";
+        }
+      });
+
+      // Delete Event by Id
+      deletebtn.addEventListener("click", function () {
+        const endpoint = `/events/delete/${id}`;
+
+        fetch(endpoint, {
+          method: "DELETE",
+        })
+          .then((response) => response.json())
+          .then((data) => (window.location.href = data.redirect))
+          .catch((err) => console.log(err));
+      });
     }
     // open modal event
     // openModalBtn.addEventListener("click", openModal);
@@ -383,18 +499,9 @@
       newEvent.dataset.target = "#myModal";
       newEvent.dataset.modal = "modal";
 
-      newEvent.addEventListener(
-        "click",
-        function () {
-          openModal(newEvent.id);
-        }
-        //   function () {
-        //     // alert(`Hello World! ${newEvent.id}`);
-        //     document.querySelector(".modal").style.display = "block";
-        //     console.log("getElementById", document.querySelector(".modal"));
-        //     console.log(`Clicked on ${newEvent.id}`);
-        //   }
-      );
+      newEvent.addEventListener("click", function () {
+        openModal(newEvent.id);
+      });
 
       console.log("New Event ===> ", newEvent.id);
       newEvent.classList.add("event");

@@ -6,18 +6,22 @@ const {
   getAllEvents,
   getEventById,
   updateEvent,
-  deleteEvent
+  deleteEvent,
+  createAllDayEvent,
+  getAllDayEvents,
 } = require("../controllers/eventController");
 
 const { requireAuth, checkUser } = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
-router.put("/delete", checkUser, deleteEvent);
-router.put("/update", checkUser, updateEvent);
+router.post("/createAllDay", checkUser, createAllDayEvent);
+router.get("/allevents", checkUser, getAllEvents);
+router.get("/allDayEvents", checkUser, getAllDayEvents);
+router.delete("/delete/:id", checkUser, deleteEvent);
+router.put("/update/:id", checkUser, updateEvent);
 router.get("/getEvent/:id", checkUser, getEventById);
 router.post("/", checkUser, event_create_post);
-router.get("/allevents", checkUser, getAllEvents);
 router.get("/createEvent", event_create_get);
 
 // router.post("/:id/edit", blogController.blog_update_put);

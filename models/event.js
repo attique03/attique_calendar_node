@@ -19,6 +19,9 @@ const eventSchema = new Schema(
       type: String,
       required: true,
     },
+    allDay: {
+      type: Boolean,
+    },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Details</title>
+    <link rel="stylesheet" href="/styles.css" type="text/css" />
+  </head>
+  <body>
+    <div class="create-blog content">
+      <form action="/events" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" />
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" />
+        <div style="display: flex; justify-content: space-between;">
+          <button>Update</button>
+          <button class="btn btn-delete">Delete</button>
+        </div>
+      </form>
+    </div>
+  </body>
+
+  <script>
+    const form = document.querySelector("form");
+    const id = window.location.pathname.split("/")[2];
+    const deletebtn = document.querySelector(".btn-delete");
+    console.log("Id  ===> ", id);
+
+    // ___________ Get Event by Id ___________
+    const endpoint = `/events/getEvent/${id}`;
+    async function getEvent() {
+      try {
+        const res = await fetch(endpoint, {
+          method: "GET",
+          //   body: JSON.stringify({ id }),
+          // body: id,
+          headers: { "Content-Type": "application/json" },
+        });
+        const data = await res.json();
+        console.log("Single Event ", data);
+
+        if (data) {
+          form.name.value = data.name;
+          form.location.value = data.location;
+        }
+      } catch (err) {
+        console.log("Single Event Fetch Error ", err);
+      }
+    }
+
+    getEvent();
+
+    // ____________ Update Event by Id _____________
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = form.name.value;
+      const location = form.location.value;
+
+      const endpoint = `/events/update/${id}`;
+      try {
+        const res = await fetch(endpoint, {
+          method: "PUT",
+          body: JSON.stringify({ name, location }),
+          headers: { "Content-Type": "application/json" },
+        });
+        const data = await res.json();
+        console.log("Data ==> ", data);
+        if (data) {
+          window.location.href = "/events";
+        }
+      } catch (err) {
+        console.log("Error => ", err);
+        window.location.href = "/events";
+      }
+    });
+
+    // ____________ Delete Event by Id ________
+    deletebtn.addEventListener("click", function () {
+      const endpoint = `/events/delete/${id}`;
+
+      fetch(endpoint, {
+        method: "DELETE",
+      })
+        .then((response) => response.json())
+        .then((data) => (window.location.href = "/events"))
+        .catch((err) => console.log(err));
+    });
+  </script>
+</html>

@@ -2,7 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
-const path = require('path');
+const path = require("path");
 const blogRoutes = require("./routes/blogRoutes");
 const authRoutes = require("./routes/authRoutes");
 const eventRoutes = require("./routes/eventRoutes");
@@ -29,12 +29,25 @@ app.get("/createEvent", (req, res) => {
   res.sendFile(path.join(__dirname, "./views/createEvent.html"));
 });
 
+app.get("/eventDetails/:id", (req, res) => {
+    res.sendFile(path.join(__dirname, "./views/detailEvents.html"));
+  });
+
 app.get("/events", (req, res) => {
-    res.sendFile(path.join(__dirname, "./views/events.html"));
+  res.sendFile(path.join(__dirname, "./views/events.html"));
+});
+
+app.get("/event/:id", (req, res) => {
+  res.sendFile(path.join(__dirname, "./views/eventDetails.html"));
+});
+
+app.get("/createAllDayEvent", (req, res) => {
+    res.sendFile(path.join(__dirname, "./views/createAllDayEvent.html"));
   });
 
 // middleware & static files
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 app.use((req, res, next) => {

@@ -115,8 +115,6 @@ button {
   display: none;
 }
 
-/* ________________________ */
-
 /* Header */
 header {
   display: flex;
@@ -155,6 +153,10 @@ header {
   border-left: 8px solid green;
 
   margin-left: 120px;
+}
+
+.all-day-event-data:hover {
+  cursor: pointer;
 }
 
 .sample-location {
@@ -344,7 +346,7 @@ label {
 }
 button {
   margin-top: 30px;
-  border-radius: 36px;
+  border-radius: 6px;
   /* background: #FEE996; */
   background: #212121fa;
   color: #fff;
@@ -354,7 +356,7 @@ button {
   font-size: 0.8em;
   display: block;
   padding: 10px 16px;
-  letter-spacing: 2px;
+  /* letter-spacing: 2px; */
 }
 .error {
   color: #ff0099;
