@@ -8,6 +8,27 @@
     <link rel="stylesheet" href="styles.css" type="text/css" />
   </head>
   <body>
+    <nav>
+      <div class="site-title">
+        <a href="/"><h1 class="blog-heading">Calendar</h1></a>
+        <p>An Event Creation Site</p>
+      </div>
+      <ul>
+        <!-- <li><a href="/">Blogs</a></li>
+          <li><a href="/about">About</a></li> -->
+
+        <!-- <% if (user) { %> -->
+        <li><a href="/createEvent">New Event</a></li>
+        <li><a href="/createAllDayEvent">All Day</a></li>
+        <li><a href="/events">Events</a></li>
+        <!-- <li class="welcome">Welcome, <%= user.email.split("@")[0] %></li> -->
+        <li><a href="/logout">Log out</a></li>
+        <!-- <% } else { %> -->
+        <li><a href="/login"></a></li>
+        <li><a href="/signup"></a></li>
+        <!-- <% } %> -->
+      </ul>
+    </nav>
     <div class="create-blog content">
       <form action="/createAllDay" method="POST">
         <label for="name">Name:</label>
