@@ -1,26 +1,26 @@
 const express = require("express");
 const morgan = require("morgan");
-const mongoose = require("mongoose");
+const colors = require("colors");
 const cookieParser = require("cookie-parser");
 const path = require("path");
 const blogRoutes = require("./routes/blogRoutes");
 const authRoutes = require("./routes/authRoutes");
 const eventRoutes = require("./routes/eventRoutes");
-const { requireAuth, checkUser } = require("./middleware/authMiddleware");
+const { checkUser } = require("./middleware/authMiddleware");
+
+const dotenv = require("dotenv");
+const connectDB = require("./config/db.js");
+
+dotenv.config();
+connectDB()
 
 // express app
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-// connect to mongodb & listen for requests
-const dbURI =
-  "mongodb+srv://atq03:john123@calendar.ai1we4z.mongodb.net/?retryWrites=true&w=majority";
-
-mongoose
-  .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then((result) => app.listen(3010))
-  .catch((err) => console.log(err));
+const PORT = process.env.PORT;
+app.listen(PORT, console.log(`Server running on port ${PORT}`.yellow.bold))
 
 // register view engine
 app.set("view engine", "ejs");
@@ -47,7 +47,6 @@ app.get("/createAllDayEvent", (req, res) => {
 
 // middleware & static files
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 app.use((req, res, next) => {
