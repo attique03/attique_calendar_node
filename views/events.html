@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events</title>
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+    <!-- <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    /> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+    <!-- <script type="module" src="index.js"></script> -->
+  </head>
+  <body>
+    <nav>
+      <div class="site-title">
+        <a href="/"><h1 class="blog-heading">Calendar</h1></a>
+        <p>An Event Creation Site</p>
+      </div>
+      <ul>
+        <!-- <li><a href="/">Blogs</a></li>
+          <li><a href="/about">About</a></li> -->
+
+        <!-- <% if (user) { %> -->
+        <li><a href="/createEvent">New Event</a></li>
+        <li><a href="/createAllDayEvent">All Day</a></li>
+        <li><a href="/events">Events</a></li>
+        <!-- <li class="welcome">Welcome, <%= user.email.split("@")[0] %></li> -->
+        <li><a href="/logout">Log out</a></li>
+        <!-- <% } else { %> -->
+        <li><a href="/login"></a></li>
+        <li><a href="/signup"></a></li>
+        <!-- <% } %> -->
+      </ul>
+    </nav>
+
+    <div class="container">
+      <!-- header -->
+      <header>Thursday, December 22</header>
+
+      <!-- All Day -->
+      <div class="all-day-section">
+        <!-- <span class="green"></span> -->
+
+        <!-- <div class="all-day-event-data">
+          <span class="all-day">ALL DAY - </span
+          ><b class="sample-item"> Sample Item </b>
+          <span class="sample-location">Sample Location</span>
+        </div> -->
+      </div>
+
+      <!-- AM -->
+      <div class="am">
+        <div class="am-title">AM</div>
+
+        <div class="am-data">
+          <div class="am-content">
+            <span class="full">9:00</span>
+
+            <div class="am-inner-content">
+              <!-- <div class="event">
+                <div class="event-content" id="cont-1">
+                  <span class="all-day">9:00AM - </span
+                  ><b class="sample-item"> Sample Item </b>
+                  <span class="sample-location" style="margin-left: 0"
+                    >Sample Location</span
+                  >
+                </div>
+              </div> -->
+              <div class="half" id="event-1">
+                <div class="event"></div>
+              </div>
+              <div class="event" id="event-2">
+                <!-- <div class="event-content" id="cont-2">
+                  <span class="all-day">9:00AM - </span
+                  ><b class="sample-item"> Sample Item </b>
+                  <span class="sample-location" style="margin-left: 0"
+                    >Sample Location</span
+                  >
+                </div> -->
+              </div>
+
+              <div class="am-inner-half">9:30</div>
+            </div>
+          </div>
+
+          <div class="am-content">
+            <span class="full">10:00</span>
+            <div class="am-inner-content">
+              <div class="half" id="event-3">
+                <div class="event"></div>
+              </div>
+              <div class="event" id="event-4"></div>
+              <div class="am-inner-half">10:30</div>
+              <!-- <div class="full"></div> -->
+            </div>
+          </div>
+
+          <div class="am-content">
+            <span class="full">11:00</span>
+            <div class="am-inner-content">
+              <div class="half" id="event-5"></div>
+              <div class="event" id="event-6"></div>
+              <div class="am-inner-half">11:30</div>
+              <!-- <div class="full"></div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pm">
+        <div class="pm-title">PM</div>
+
+        <div class="am-data">
+          <div class="am-content">
+            <span class="full">12:00</span>
+            <div class="am-inner-content">
+              <div class="half" id="event-7"></div>
+              <div class="event" id="event-8"></div>
+              <div class="am-inner-half">12:30</div>
+              <!-- <div class="full"></div> -->
+            </div>
+          </div>
+
+          <div class="am-content">
+            <span class="full">1:00</span>
+            <div class="am-inner-content">
+              <div class="half" id="event-9"></div>
+              <div class="event" id="event-10"></div>
+              <div class="am-inner-half">1:30</div>
+              <!-- <div class="full"></div> -->
+            </div>
+          </div>
+
+          <div class="am-content">
+            <span class="full">2:00</span>
+            <div class="am-inner-content">
+              <div class="half" id="event-11"></div>
+              <div class="event" id="event-12"></div>
+              <div class="am-inner-half">2:30</div>
+              <!-- <div class="full"></div> -->
+            </div>
+          </div>
+
+          <div class="am-content">
+            <span class="full">3:00</span>
+            <div class="am-inner-content">
+              <div class="half" id="event-13"></div>
+              <div class="event" id="event-14"></div>
+              <div class="am-inner-half">3:30</div>
+              <!-- <div class="full"></div> -->
+            </div>
+          </div>
+
+          <div class="am-content">
+            <span class="full">4:00</span>
+            <div class="am-inner-content">
+              <div class="half" id="event-15"></div>
+              <div class="event" id="event-16"></div>
+              <div class="am-inner-half">4:30</div>
+              <!-- <div class="full"></div> -->
+            </div>
+          </div>
+
+          <div class="am-content">
+            <span class="full">5:00</span>
+            <div class="am-inner-content">
+              <div class="half" id="event-17"></div>
+              <div class="event" id="event-18"></div>
+              <div class="am-inner-half">5:30</div>
+              <!-- <div class="full"></div> -->
+            </div>
+          </div>
+
+          <div class="am-content">
+            <span class="full">6:00</span>
+            <div class="am-inner-content">
+              <!-- <div class="event" id="event-2">
+                <div class="event-content" id="cont-2">
+                  <span class="all-day">9:00AM - </span
+                  ><b class="sample-item"> Sample Item </b>
+                  <span class="sample-location" style="margin-left: 0"
+                    >Sample Location</span
+                  >
+                </div>
+              </div> -->
+
+              <div class="half" id="event-19"></div>
+              <div class="event" id="event-20"></div>
+              <div class="am-inner-half">6:30</div>
+              <!-- <div class="full"></div> -->
+            </div>
+          </div>
+
+          <div class="am-content">
+            <span class="full">7:00</span>
+            <div class="am-inner-content">
+              <div class="half" id="event-21"></div>
+              <div class="event" id="event-22"></div>
+              <div class="am-inner-half">7:30</div>
+              <!-- <div class="full"></div> -->
+            </div>
+          </div>
+
+          <div class="am-content">
+            <span class="full">8:00</span>
+            <div class="am-inner-content">
+              <div class="half" id="event-23"></div>
+              <div class="event" id="event-24"></div>
+              <div class="am-inner-half">8:30</div>
+              <!-- <div class="full"></div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ______________ Events Modal _________ -->
+    <section class="modal hidden">
+      <div class="flex">
+        <!-- <img
+          src="https://avatars.githubusercontent.com/u/62628408?s=96&v=4"
+          width="50px"
+          height="50px"
+          alt="user"
+        /> -->
+        <div></div>
+        <button class="btn-close">⨉</button>
+      </div>
+      <!-- <div>
+        <h3>Stay in touch</h3>
+        <p>
+          This is a dummy newsletter form so don't bother trying to test it. Not
+          that I expect you to, anyways. :)
+        </p>
+      </div> -->
+
+      <button class="btn btn-delete">Delete this event</button>
+
+      <!-- Form -->
+      <div class="create-blog content">
+        <form action="/events" method="POST">
+          <label for="start">Start Time:</label>
+          <input type="text" id="startTime" name="startTime" required />
+          <label for="end">End Time:</label>
+          <input type="text" id="endTime" name="endTime" required />
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+          <label for="location">Location:</label>
+          <input type="text" id="location" name="location" required />
+          <button>Update</button>
+        </form>
+      </div>
+
+      <!-- <input type="email" id="email" placeholder="brendaneich@js.com" />
+      <button class="btn">Do Something</button> -->
+    </section>
+
+    <div class="overlay hidden"></div>
+    <!-- <button class="btn btn-open">Open Modal</button> -->
+  </body>
+
+  <script type="module" src="/index.js"></script>
+</html>

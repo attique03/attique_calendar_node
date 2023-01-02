@@ -7,6 +7,13 @@
 
 body {
   background-color: #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #222;
+  position: relative;
+  min-height: 100vh;
 }
 
 .container {
@@ -23,7 +30,7 @@ body {
   font-family: "Inter", sans-serif;
 }
 
-body {
+/* body {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,8 +38,8 @@ body {
   color: #222;
   position: relative;
   min-height: 100vh;
-  /* background-color: #b3e6f4; */
-}
+  background-color: #b3e6f4;
+} */
 
 .modal {
   display: flex;
