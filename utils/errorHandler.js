@@ -1,5 +1,5 @@
 // handle errors
-const handleErrors = (err) => {
+const handleUserErrors = (err) => {
     console.log(err.message, err.code);
     let errors = { email: "", password: "" };
   
@@ -29,4 +29,4 @@ const handleErrors = (err) => {
     return errors;
   };
 
-  module.exports = handleErrors;
+  module.exports = handleUserErrors;

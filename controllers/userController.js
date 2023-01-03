@@ -1,6 +1,6 @@
 const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
-const handleErrors = require("../utils/errorHandler");
+const handleUserErrors = require("../utils/errorHandler");
 const { createToken, maxAge } = require("../utils/generateToken");
 
 const handleRegister = (req, res) => {
@@ -20,7 +20,7 @@ const registerUser = async (req, res) => {
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
     res.status(201).json({ user: user._id });
   } catch (err) {
-    const errors = handleErrors(err);
+    const errors = handleUserErrors(err);
     res.status(400).json({ errors });
   }
 };
@@ -44,7 +44,7 @@ const authUser = async (req, res) => {
       throw Error("incorrect email");
     }
   } catch (err) {
-    const errors = handleErrors(err);
+    const errors = handleUserErrors(err);
     res.status(400).json({ errors });
   }
 };
