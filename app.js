@@ -3,16 +3,14 @@ const morgan = require("morgan");
 const colors = require("colors");
 const cookieParser = require("cookie-parser");
 const path = require("path");
-const blogRoutes = require("./routes/blogRoutes");
-const authRoutes = require("./routes/authRoutes");
+const userRoutes = require("./routes/userRoutes");
 const eventRoutes = require("./routes/eventRoutes");
 const { checkUser } = require("./middleware/authMiddleware");
-
 const dotenv = require("dotenv");
 const connectDB = require("./config/db.js");
 
 dotenv.config();
-connectDB()
+connectDB();
 
 // express app
 const app = express();
@@ -20,18 +18,15 @@ app.use(express.json());
 app.use(cookieParser());
 
 const PORT = process.env.PORT;
-app.listen(PORT, console.log(`Server running on port ${PORT}`.yellow.bold))
+app.listen(PORT, console.log(`Server running on port ${PORT}`.yellow.bold));
 
 // register view engine
 app.set("view engine", "ejs");
 
+// Render HTML Pages
 app.get("/createEvent", (req, res) => {
   res.sendFile(path.join(__dirname, "./views/createEvent.html"));
 });
-
-app.get("/eventDetails/:id", (req, res) => {
-    res.sendFile(path.join(__dirname, "./views/detailEvents.html"));
-  });
 
 app.get("/events", (req, res) => {
   res.sendFile(path.join(__dirname, "./views/events.html"));
@@ -42,11 +37,11 @@ app.get("/event/:id", (req, res) => {
 });
 
 app.get("/createAllDayEvent", (req, res) => {
-    res.sendFile(path.join(__dirname, "./views/createAllDayEvent.html"));
-  });
+  res.sendFile(path.join(__dirname, "./views/createAllDayEvent.html"));
+});
 
 // middleware & static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 app.use((req, res, next) => {
@@ -58,21 +53,15 @@ app.get("*", checkUser);
 
 // routes
 app.get("/", (req, res) => {
-  res.redirect("/blogs");
+  res.render("index");
+  // res.redirect("/blogs");
 });
 
-app.get("/about", (req, res) => {
-  res.render("about", { title: "About" });
-});
-
-// event routes
+// Event routes
 app.use("/events", eventRoutes);
 
-// blog routes
-app.use("/blogs", blogRoutes);
-
 // User routes
-app.use(authRoutes);
+app.use(userRoutes);
 
 // 404 page
 app.use((req, res) => {

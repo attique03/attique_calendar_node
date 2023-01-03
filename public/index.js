@@ -167,8 +167,6 @@ async function openModal(id) {
     const name = form.name.value;
     const location = form.location.value;
 
-    // const id = blogId.dataset.doc;
-
     const endpoint = `/events/update/${id}`;
 
     try {
